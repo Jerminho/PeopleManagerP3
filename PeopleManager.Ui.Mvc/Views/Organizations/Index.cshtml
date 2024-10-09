@@ -1,0 +1,61 @@
+﻿@model IList<OrganizationResult>
+
+@{
+    ViewData["Title"] = "Organization List";
+}
+
+<a asp-action="Create" class="btn btn-primary">New Organization</a>
+
+<table class="table table-dark table-striped">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    
+    @foreach (var organization in Model)
+    {
+        <partial name="OrganizationRowPartial" model="organization" />
+    }
+    </tbody>
+</table>
+
+@section Modals
+{
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete organization <span id="name"></span>?</p>
+                </div>
+                <div class="modal-footer">
+                    <form asp-action="DeleteConfirmed" method="post">
+                        <input type="hidden" name="Id" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Yes</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts
+{
+    <script>
+        $("button[data-mode='delete']").on("click", function () {
+            let id = $(this).data("id");
+            let name = $(this).data("name");
+            $("#deleteModal input[name='Id']").val(id);
+            $("#name").html(name);
+        });
+    </script>
+}

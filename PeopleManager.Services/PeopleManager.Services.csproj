@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PeopleManager.Configuration\PeopleManager.Configuration.csproj" />
+    <ProjectReference Include="..\PeopleManager.Core\PeopleManager.Core.csproj" />
+    <ProjectReference Include="..\PeopleManager.Dto\PeopleManager.Dto.csproj" />
+    <ProjectReference Include="..\Vives.Services.Model\Vives.Services.Model.csproj" />
+  </ItemGroup>
+
+</Project>

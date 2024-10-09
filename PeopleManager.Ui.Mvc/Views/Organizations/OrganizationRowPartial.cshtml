@@ -1,0 +1,18 @@
+﻿@model OrganizationResult
+
+<tr>
+    <td>@Model.Name</td>
+    <td>@Model.Description</td>
+    <td>
+        <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+        <button class="btn btn-danger"
+                data-bs-toggle="modal"
+                data-bs-target="#deleteModal"
+                data-id="@Model.Id"
+                data-mode="delete"
+                data-name="@Model.Name">
+            Delete with modal
+        </button>
+    </td>
+</tr>

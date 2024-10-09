@@ -1,0 +1,32 @@
+﻿@model IList<PersonResult>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Employee of the Month!</h1>
+    @{
+        var firstEmployee = Model.FirstOrDefault();
+        if (firstEmployee is not null)
+        {
+            <partial name="PersonCardPartial" model="firstEmployee"/>
+        }
+        else
+        {
+            <span>We have no employees to choose from...</span>
+        }
+    }
+</div>
+
+
+<div>
+    <h1>Employees list</h1>
+    <div class="row">
+        @foreach (var person in Model)
+        {
+            <div class="col-4">
+                <partial name="PersonCardPartial" model="person"/>
+            </div>
+        }
+    </div>
+</div>
